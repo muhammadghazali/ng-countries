@@ -11,12 +11,26 @@ module.exports = function(config) {
     // frameworks to use
     frameworks: ['jasmine'],
 
+    preprocessors: {
+      // location of templates
+      'src/templates/**/*.html': ['ng-html2js']
+    },
+
+    ngHtml2JsPreprocessor: {
+      // strip app from the file path
+      stripPrefix: 'src/'
+    },
+
 
     // list of files / patterns to load in the browser
     files: [
       'bower_components/angular/angular.js',
       'bower_components/angular-mocks/angular-mocks.js',
-      'src/*.js'
+      'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
+      'src/*.js',
+      'test/specs/**/*.js',
+      //location of templates
+      'src/templates/**/*.html'
     ],
 
 
