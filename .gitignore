@@ -15,3 +15,4 @@ npm-debug.log
 node_modules
 ng-countries.sublime-project
 ng-countries.sublime-workspace
+bower_components/
