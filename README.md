@@ -28,3 +28,7 @@ To run the unit tests:
 ```
 $ npm test
 ```
+
+# License
+
+Licensed under the MIT License.
