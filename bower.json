@@ -20,7 +20,13 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "*.sublime-*",
+    "package.json",
+    "karma.conf.js",
+    "README.md",
+    "Gruntfile.js",
+    "bower.json"
   ],
   "dependencies": {
     "angular": "~1.2.5",
