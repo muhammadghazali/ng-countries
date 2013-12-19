@@ -1,4 +1,6 @@
 ng-countries
 ============
 
-An Angular directives to list countries
+# Overview
+
+An Angular directives to typeahead countries.
