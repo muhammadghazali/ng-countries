@@ -738,10 +738,20 @@ angular.module('ng-countries', ['ui.bootstrap'])
       };
     }
   ])
-  .directive('countries', function coutriesDirective() {
-    return {
-      templateUrl: 'templates/typeahead-countries.html',
-      restrict: 'E',
-      replace: true
-    };
-  });
+  .directive('countries', ['$location',
+    function coutriesDirective($location) {
+
+      var RELATIVE_PATH = 'templates/typeahead-countries.html';
+      var RELATIVE_BOWER_PATH = $location.path() +
+        'bower_components/ng-countries/src/' + RELATIVE_PATH;
+
+      var templateUrl = ($location.path() === '') ?
+        RELATIVE_PATH : RELATIVE_BOWER_PATH;
+
+      return {
+        templateUrl: templateUrl,
+        restrict: 'E',
+        replace: true
+      };
+    }
+  ]);
