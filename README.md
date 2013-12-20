@@ -1,6 +1,8 @@
 ng-countries
 ============
 
+[![Build Status](https://travis-ci.org/muhammadghazali/ng-countries.png?branch=master)](https://travis-ci.org/muhammadghazali/ng-countries)
+
 # Overview
 
 An Angular directives to typeahead countries.
