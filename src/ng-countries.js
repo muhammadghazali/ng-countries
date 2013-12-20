@@ -741,15 +741,20 @@ angular.module('ng-countries', ['ui.bootstrap'])
   .directive('countries', ['$location',
     function coutriesDirective($location) {
 
-      var RELATIVE_PATH = 'templates/typeahead-countries.html';
-      var RELATIVE_BOWER_PATH = $location.path() +
-        'bower_components/ng-countries/src/' + RELATIVE_PATH;
+      var RELATIVE_TEMPLATE_PATH = 'templates/typeahead-countries.html';
+      var BOWER_PATH = '/' + 'bower_components/ng-countries/src/' +
+        RELATIVE_TEMPLATE_PATH;
 
-      var templateUrl = ($location.path() === '') ?
-        RELATIVE_PATH : RELATIVE_BOWER_PATH;
+      // http://example.com/bower_components/ng-countries/src/templates/
+      // typeahead-countries.html
+      var relativePathToBower = ($location.path() === '') ?
+      // will refer to this path in testing
+      RELATIVE_TEMPLATE_PATH :
+      // will refer to this path in production
+      BOWER_PATH;
 
       return {
-        templateUrl: templateUrl,
+        templateUrl: relativePathToBower,
         restrict: 'E',
         replace: true
       };
