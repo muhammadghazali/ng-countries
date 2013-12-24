@@ -742,7 +742,7 @@ angular.module('ng-countries', ['ui.bootstrap'])
     }
   ])
   .directive('countries', ['$location',
-    function coutriesDirective($location) {
+    function countriesDirective($location) {
 
       var RELATIVE_TEMPLATE_PATH = 'templates/typeahead-countries.html';
       var BOWER_PATH = '/' + 'bower_components/ng-countries/src/' +
