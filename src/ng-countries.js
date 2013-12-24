@@ -734,7 +734,7 @@ angular.module('ng-countries', ['ui.bootstrap'])
     }];
   })
   .controller('CountriesTypeAheadCtrl', ['$scope', 'CountryList',
-    function($scope, CountryList) {
+    function CountriesTypeAheadCtrl($scope, CountryList) {
       $scope.data = {
         selected: undefined,
         countries: CountryList
