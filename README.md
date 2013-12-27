@@ -57,7 +57,7 @@ To use this directive add the following element in your template file:
 
 ```
 
-And you will see somthing like this when it's render by the browser:
+And you will see something like this when it's render by the browser:
 
 ![ng-coutries typeahead](https://dl.dropboxusercontent.com/u/5877351/ng-coutries-typeahead.gif)
 
