@@ -50,7 +50,7 @@ To use this directive add the following element in your template file:
 
 ```
 ...
-<countries></countries>
+<ghanoz-countries></ghanoz-countries>
 ...
 
 ```
