@@ -10,14 +10,13 @@ describe('ng-countries', function() {
     scope;
 
   beforeEach(inject(function($rootScope, $compile) {
-    element = angular.element('<countries></countries>');
+    element = angular.element('<ghanoz-countries></ghanoz-countries>');
     scope = $rootScope.$new();
     element = $compile(element)(scope);
     scope.$digest();
   }));
 
-  it('should make hidden element visible', function() {
-    expect(element.attr('class')).toBe('container-fluid');
-    expect(element.attr('ng-controller')).toBe('CountriesTypeAheadCtrl');
+  it('should make hidden element visible and isolate the scope', function() {
+    expect(element.attr('class')).toBe('container-fluid ng-isolate-scope');
   });
 });

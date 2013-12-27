@@ -733,16 +733,22 @@ angular.module('ng-countries', ['ui.bootstrap'])
       code: 'ZW'
     }];
   })
-  .controller('CountriesTypeAheadCtrl', ['$scope', 'CountryList',
-    function CountriesTypeAheadCtrl($scope, CountryList) {
-      $scope.data = {
-        selected: undefined,
-        countries: CountryList
-      };
+  .factory('CountryListWithoutCode', ['CountryList',
+    // pluck out country names
+    function CountryListWithoutCodeFactory(CountryList) {
+      var countryList = [];
+
+      for (var i = 0; i < CountryList.length; i++) {
+        countryList.push(CountryList[i].name);
+      }
+
+      return countryList;
     }
   ])
-  .directive('countries', ['$location',
-    function countriesDirective($location) {
+  .directive('ghanozCountries', ['$location', 'CountryList',
+    'CountryListWithoutCode',
+    function ghanozCountriesDirective($location, CountryList,
+      CountryListWithoutCode) {
 
       var RELATIVE_TEMPLATE_PATH = 'templates/typeahead-countries.html';
       var BOWER_PATH = '/' + 'bower_components/ng-countries/src/' +
@@ -759,7 +765,17 @@ angular.module('ng-countries', ['ui.bootstrap'])
       return {
         templateUrl: relativePathToBower,
         restrict: 'E',
-        replace: true
+        replace: true,
+        scope: {},
+        link: function postLinkFn(scope) {
+          scope.countryList = CountryList;
+          scope.$watch('selected', function(newValue) {
+            // only emit if the selected is in the country list
+            if (CountryListWithoutCode.indexOf(newValue) === 0) {
+              scope.$emit('country.selected', newValue);
+            }
+          });
+        }
       };
     }
   ]);
