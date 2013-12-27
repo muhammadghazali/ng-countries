@@ -19,7 +19,7 @@ describe('Service: CountryList', function() {
     expect(CountryList.length).toEqual(243);
   });
 
-  it('should contained country name nad code', function() {
+  it('should contained country name and code', function() {
     expect(CountryList[0].hasOwnProperty('name')).toBe(true);
     expect(CountryList[0].hasOwnProperty('code')).toBe(true);
   });
