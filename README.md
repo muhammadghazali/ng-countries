@@ -46,6 +46,8 @@ angular.module('yourAwesomeApplication', [
 
 # Usage
 
+## Add ghanoz-countries element to your application views
+
 To use this directive add the following element in your template file:
 
 ```
@@ -55,9 +57,24 @@ To use this directive add the following element in your template file:
 
 ```
 
-And you will see somthing like this when it's render by the browser:
+And you will see something like this when it's render by the browser:
 
 ![ng-coutries typeahead](https://dl.dropboxusercontent.com/u/5877351/ng-coutries-typeahead.gif)
+
+## Listen on country.selected event
+
+When the user finish selected the country name, then this module will emit `country.selected` event.
+To know the selected country, please put a listener in your application controller:
+
+```
+...
+
+$scope.$on('country.selected', function (event, args) {
+  // for example output will be "Indonesia" if I select Indonesia
+  console.log('country.selected', args);
+});
+...
+```
 
 # Development
 
