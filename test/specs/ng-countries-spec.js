@@ -4,7 +4,7 @@ describe('ng-countries', function() {
 
   // load the directive's module
   beforeEach(module('ng-countries'));
-  beforeEach(module('templates/typeahead-countries.html'));
+  beforeEach(module('templates/typeahead-countries.tpl.html'));
 
   var element,
     scope;
