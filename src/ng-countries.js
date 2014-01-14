@@ -1,9 +1,8 @@
 'use strict';
 
-var ngCountries = angular.module('ng-countries', ['ui.bootstrap']);
+angular.module('ng-countries', ['ui.bootstrap'])
 
-
-ngCountries.factory('CountryList', function CountryListFactory() {
+.factory('CountryList', function CountryListFactory() {
   return [{
     name: 'Afghanistan',
     code: 'AF'
@@ -734,9 +733,9 @@ ngCountries.factory('CountryList', function CountryListFactory() {
     name: 'Zimbabwe',
     code: 'ZW'
   }];
-});
+})
 
-ngCountries.factory('CountryListWithoutCode', ['CountryList',
+.factory('CountryListWithoutCode', ['CountryList',
   // pluck out country names
   function CountryListWithoutCodeFactory(CountryList) {
     var countryList = [];
@@ -747,9 +746,9 @@ ngCountries.factory('CountryListWithoutCode', ['CountryList',
 
     return countryList;
   }
-]);
+])
 
-ngCountries.directive('ghanozCountries', ['$location', 'CountryList',
+.directive('ghanozCountries', ['$location', 'CountryList',
   'CountryListWithoutCode',
   function ghanozCountriesDirective($location, CountryList,
     CountryListWithoutCode) {
