@@ -753,12 +753,12 @@ angular.module('ng-countries', ['ui.bootstrap'])
   function ghanozCountriesDirective($location, CountryList,
     CountryListWithoutCode) {
 
-    var RELATIVE_TEMPLATE_PATH = 'templates/typeahead-countries.html';
+    var RELATIVE_TEMPLATE_PATH = 'templates/typeahead-countries.tpl.html';
     var BOWER_PATH = '/' + 'bower_components/ng-countries/src/' +
       RELATIVE_TEMPLATE_PATH;
 
     // http://example.com/bower_components/ng-countries/src/templates/
-    // typeahead-countries.html
+    // typeahead-countries.tpl.html
     var relativePathToBower = ($location.path() === '') ?
     // will refer to this path in testing
     RELATIVE_TEMPLATE_PATH :
