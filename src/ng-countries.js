@@ -748,25 +748,18 @@ angular.module('ng-countries', ['ui.bootstrap'])
   }
 ])
 
-.directive('ghanozCountries', ['$location', 'CountryList',
+.directive('ghanozCountriesTypeahead', ['$location', 'CountryList',
   'CountryListWithoutCode',
   function ghanozCountriesDirective($location, CountryList,
     CountryListWithoutCode) {
 
-    var RELATIVE_TEMPLATE_PATH = 'templates/typeahead-countries.tpl.html';
-    var BOWER_PATH = '/' + 'bower_components/ng-countries/src/' +
-      RELATIVE_TEMPLATE_PATH;
-
-    // http://example.com/bower_components/ng-countries/src/templates/
-    // typeahead-countries.tpl.html
-    var relativePathToBower = ($location.path() === '') ?
-    // will refer to this path in testing
-    RELATIVE_TEMPLATE_PATH :
-    // will refer to this path in production
-    BOWER_PATH;
+    var template = '<div class="container-fluid">' +
+      '<input type="text" ng-model="selected" ' +
+      'typeahead="country.name for country in countryList | filter:$viewValue | ' +
+      'limitTo:8" placeholder="Type to choose..."></div>'
 
     return {
-      templateUrl: relativePathToBower,
+      template: template,
       restrict: 'E',
       replace: true,
       scope: {},
@@ -775,6 +768,34 @@ angular.module('ng-countries', ['ui.bootstrap'])
         scope.$watch('selected', function(newValue) {
           // only emit if the selected is in the country list
           if (CountryListWithoutCode.indexOf(newValue) === 0) {
+            scope.$emit('country.selected', newValue);
+          }
+        });
+      }
+    };
+  }
+])
+
+.directive('ghanozCountriesSelect', ['$location', 'CountryList',
+  'CountryListWithoutCode',
+  function ghanozCountriesDirective($location, CountryList,
+    CountryListWithoutCode) {
+
+    var template = '<select type="text" ng-model="country.selected" ' +
+      'ng-options="country.name for country in countryList"></select>';
+
+    return {
+      template: template,
+      restrict: 'E',
+      replace: true,
+      scope: {},
+      link: function postLinkFn(scope) {
+        console.log('scope', scope);
+        scope.countryList = CountryList;
+        scope.$watch('country.selected', function(newValue) {
+          // only emit if the selected is in the country list
+          if (CountryListWithoutCode.indexOf(newValue) === 0) {
+            scope.country.selected = newValue;
             scope.$emit('country.selected', newValue);
           }
         });

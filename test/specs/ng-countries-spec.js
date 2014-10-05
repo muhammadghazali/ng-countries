@@ -1,22 +1,44 @@
 'use strict';
 
-describe('ng-countries', function() {
+describe('ng-countries directives', function() {
 
-  // load the directive's module
-  beforeEach(module('ng-countries'));
-  beforeEach(module('templates/typeahead-countries.tpl.html'));
+  describe('<ghanoz-countries-typeahead>', function() {
+    // load the directive's module
+    beforeEach(module('ng-countries'));
 
-  var element,
-    scope;
+    var element,
+      scope;
 
-  beforeEach(inject(function($rootScope, $compile) {
-    element = angular.element('<ghanoz-countries></ghanoz-countries>');
-    scope = $rootScope.$new();
-    element = $compile(element)(scope);
-    scope.$digest();
-  }));
+    beforeEach(inject(function($rootScope, $compile) {
+      element = angular.element('<ghanoz-countries-typeahead></ghanoz-countries-typeahead>');
+      scope = $rootScope.$new();
+      element = $compile(element)(scope);
+      scope.$digest();
+    }));
 
-  it('should make hidden element visible and isolate the scope', function() {
-    expect(element.attr('class')).toBe('container-fluid ng-isolate-scope');
+    it('should make hidden element visible and isolate the scope', function() {
+      expect(element.attr('class')).toBe('container-fluid ng-scope ng-isolate-scope');
+    });
   });
+
+
+  describe('<ghanoz-countries-select>', function() {
+    // load the directive's module
+    beforeEach(module('ng-countries'));
+
+    var element,
+      scope;
+
+    beforeEach(inject(function($rootScope, $compile) {
+      element = angular.element('<ghanoz-countries-select></ghanoz-countries-select>');
+      scope = $rootScope.$new();
+      element = $compile(element)(scope);
+      scope.$digest();
+    }));
+
+    it('should make hidden element visible and isolate the scope', function() {
+      expect(element.attr('class')).toBe('ng-scope ng-isolate-scope ng-pristine ng-valid');
+    });
+  });
+
 });
